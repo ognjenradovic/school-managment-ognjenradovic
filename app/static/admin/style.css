@@ -1,0 +1,25 @@
+.pageContainer{
+    display: flex;
+    height:100%;
+    width:100%;
+  }
+  .navContainer{
+    display: flex;
+    width:15%;
+    background-color: rgb(255, 255, 255);
+  }
+  .panelContainer{
+    padding: 1em;
+    width:85%;
+    background-color: rgb(233, 233, 233);
+  }
+  .grid-container {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+row-gap:1em;
+column-gap:1em;
+}
+.btn-razmak{
+margin-bottom:0.6em;
+width: 100%;
+}
