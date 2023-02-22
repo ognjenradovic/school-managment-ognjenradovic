@@ -12,6 +12,7 @@
     padding: 1em;
     width:85%;
     background-color: rgb(233, 233, 233);
+    overflow-y: scroll;
   }
   .grid-container {
 display: grid;
@@ -22,4 +23,7 @@ column-gap:1em;
 .btn-razmak{
 margin-bottom:0.6em;
 width: 100%;
+}
+body{
+  height:100%;
 }

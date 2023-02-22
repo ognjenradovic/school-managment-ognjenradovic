@@ -54,11 +54,11 @@ function authToken(req, res, next) {
 rtr.use(authToken);
 
 rtr.get('/students',(req, res) => {
-    // const { role } = req.user;    
-    // if (role !== 'admin') {
-    //     return res.sendStatus(403);
-    // }
-    Students.findAll({include:{ all: true, nested: true }})
+    const { role } = req.user;    
+    if (role !== 'admin') {
+        return res.sendStatus(403);
+    }
+    Students.findAll({include:{ all: true, nested: false }})
     .then(rows=>res.json(rows))
     .catch(err=>res.status(500).json(err));
 });
@@ -68,20 +68,20 @@ rtr.get('/students/:id',(req, res) => {
     if (role !== 'admin') {
         return res.sendStatus(403);
     }
-    Students.findOne({ where: { id: req.params.id} ,include:{ all: true, nested: true }})
+    Students.findOne({ where: { id: req.params.id} ,include:{ all: true, nested: false }})
     .then(rows=>res.json(rows))
     .catch(err=>res.status(500).json(err));
 });
 
-rtr.post('/register/',(req, res) => {
+// rtr.post('/register/',(req, res) => {
 
-    const student={name:req.body.name,email:"placeholder@gmail.com",password:req.body.password,classId:1};
+//     const student={name:req.body.name,email:"placeholder@gmail.com",password:req.body.password,classId:1};
   
-        Students.create(student)
-        .then(rows=>res.json(rows))
-        .catch(err=>res.status(500).json(err));
+//         Students.create(student)
+//         .then(rows=>res.json(rows))
+//         .catch(err=>res.status(500).json(err));
 
-});
+// });
 
 
 rtr.post('/students/',(req, res) => {
@@ -106,7 +106,6 @@ rtr.post('/students/',(req, res) => {
 });
 
 rtr.put('/students/:id',(req, res) => {
-    //Ovde treba provera autentifikcaije i autorizacije
     const { role } = req.user;    
     if (role !== 'admin') {
         return res.sendStatus(403);

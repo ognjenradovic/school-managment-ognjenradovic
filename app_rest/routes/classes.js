@@ -44,7 +44,7 @@ rtr.get('/classes',(req, res) => {
     if (role !== 'admin' && role!=='moderator' && role!=='professor') {
         return res.sendStatus(403);
     }
-    Classes.findAll()
+    Classes.findAll({include:['Students']})
     .then( rows => res.json(rows) )
     .catch( err => res.status(500).json(err) );
 
@@ -56,7 +56,7 @@ rtr.get('/classes/:id',(req, res) => {
     if (role !== 'admin' && role!=='moderator' && role!=='professor') {
         return res.sendStatus(403);
     }
-    Classes.findOne({ where: { id: req.params.id} ,include:{ all: true, nested: true }})
+    Classes.findOne({ where: { id: req.params.id} ,include:['Students']})
     .then(rows=>res.json(rows))
     .catch(err=>res.status(500).json(err));
 });

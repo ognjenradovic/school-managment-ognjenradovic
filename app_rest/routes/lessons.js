@@ -75,7 +75,7 @@ rtr.get('/lessons/:id',(req, res) => {
     if (role !== 'admin' && role!=='moderator' && role!=='professor') {
         return res.sendStatus(403);
     }
-    Lessons.findOne({ where: { id: req.params.id },include:{ all: true, nested: true } })
+    Lessons.findOne({ where: { id: req.params.id },include:{ all: true, nested: false } })
     .then(rows=>res.json(rows))
     .catch(err=>res.status(500).json(err));
 });

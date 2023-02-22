@@ -22,7 +22,7 @@ function init() {
                 } else {
                   //  document.cookie = `token=${el.token};SameSite=Lax`;
                     document.cookie = `token=${el.token}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`;
-                    window.location.href = '/temp/index.html';
+                    window.location.href = '/admin/subjects';
                 }
             });
     });

@@ -55,7 +55,7 @@ function authToken(req, res, next) {
 }
 
 
-// rtr.use(authToken);
+rtr.use(authToken);
 
 rtr.get('/users',(req, res) => {
     const { role } = req.user;    
